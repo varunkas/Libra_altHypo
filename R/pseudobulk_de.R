@@ -24,6 +24,13 @@
 #' @param de_type the specific parameter of the differential expression testing
 #'   method. Defaults to LRT for edgeR, LRT for DESeq2, and trend for limma.
 #' @param input_type refers to either scRNA or scATAC
+#' @param deseq2_altHypothesis the alternative hypothesis to use. Only applicable for DESeq2 when used with Pseudobulk. Options are:
+#' \itemize{
+#' \item{"greater"}
+#' \item{"less"}
+#' \item{"greaterAbs"}
+#' \item{"lessAbs"}
+#' }
 #' @return a data frame containing differential expression results.
 #'  
 #' @importFrom magrittr %<>%
@@ -48,7 +55,8 @@ pseudobulk_de = function(input,
                          min_features = 0,
                          de_family = 'pseudobulk',
                          de_method = 'edgeR',
-                         de_type = 'LRT') {
+                         de_type = 'LRT',
+                         deseq2_altHypothesis = deseq2_altHypothesis) {
   # check args
   if (de_method == 'limma') {
     if (de_type != 'voom') {
@@ -132,7 +140,7 @@ pseudobulk_de = function(input,
                                                    betaPrior = F))
                                  }
                     )
-                    res = results(dds)
+                    res = results(dds, altHypothesis = deseq2_altHypothesis)
                     # write
                     res = as.data.frame(res) %>%
                       mutate(gene = rownames(x)) %>%

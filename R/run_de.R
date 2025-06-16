@@ -109,6 +109,13 @@
 #' or see the documentation at https://github.com/neurorestore/Libra. This
 #' option defaults to \code{NULL} for \code{singlecell} methods, to \code{LRT}
 #' for \code{pseudobulk} and \code{mixedmodel} methods.
+#' @param deseq2_altHypothesis the alternative hypothesis to use. Only applicable for DESeq2 when used with Pseudobulk. Options are:
+#' \itemize{
+#' \item{"greater"}
+#' \item{"less"}
+#' \item{"greaterAbs"}
+#' \item{"lessAbs"}
+#' }
 #' @param input_type refers to either scRNA or scATAC
 #' @param normalization normalization for single-cell based Seurat/Signac methods, options include
 #' \itemize{
@@ -160,6 +167,7 @@ run_de = function(input,
                   min_features = 1,
                   de_family = 'pseudobulk',
                   de_method = 'edgeR',
+                  deseq2_altHypothesis = NULL,
                   de_type = 'LRT',
                   input_type = 'scRNA',
                   normalization = 'log_tp10k',
@@ -219,7 +227,8 @@ run_de = function(input,
                 min_features = min_features,
                 de_family = 'pseudobulk',
                 de_method = de_method,
-                de_type = de_type
+                de_type = de_type,
+                deseq2_altHypothesis = deseq2_altHypothesis
               ),
               mixedmodel = mixedmodel_de(
                 input = input,

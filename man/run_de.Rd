@@ -15,6 +15,7 @@ run_de(
   min_features = 1,
   de_family = "pseudobulk",
   de_method = "edgeR",
+  deseq2_altHypothesis = NULL,
   de_type = "LRT",
   input_type = "scRNA",
   normalization = "log_tp10k",
@@ -131,6 +132,14 @@ or see the documentation at https://github.com/neurorestore/Libra. This
 option will default to \code{wilcox} for \code{singlecell} methods, to
 \code{edgeR} for \code{pseudobulk} methods, and \code{negbinom} for
 \code{mixedmodel} methods.}
+
+\item{deseq2_altHypothesis}{the alternative hypothesis to use. Only applicable for DESeq2 when used with Pseudobulk. Options are:
+\itemize{
+\item{"greater"}
+\item{"less"}
+\item{"greaterAbs"}
+\item{"lessAbs"}
+}}
 
 \item{input_type}{refers to either scRNA or scATAC}
 

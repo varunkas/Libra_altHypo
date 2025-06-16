@@ -15,7 +15,8 @@ pseudobulk_de(
   min_features = 0,
   de_family = "pseudobulk",
   de_method = "edgeR",
-  de_type = "LRT"
+  de_type = "LRT",
+  deseq2_altHypothesis = deseq2_altHypothesis
 )
 }
 \arguments{
@@ -49,6 +50,14 @@ Defaults to edgeR.}
 
 \item{de_type}{the specific parameter of the differential expression testing
 method. Defaults to LRT for edgeR, LRT for DESeq2, and trend for limma.}
+
+\item{deseq2_altHypothesis}{the alternative hypothesis to use. Only applicable for DESeq2 when used with Pseudobulk. Options are:
+\itemize{
+\item{"greater"}
+\item{"less"}
+\item{"greaterAbs"}
+\item{"lessAbs"}
+}}
 
 \item{input_type}{refers to either scRNA or scATAC}
 }
