@@ -1,5 +1,7 @@
 # README
 
+***This is a modidfied version of Libra that allows setting the AltHypothesis for Pseudobulk mode of DESeq2***
+
 Libra is an R package to perform differential expression/accessibility on single-cell data. Libra implements unique differential expression/accessibility methods that can all be accessed from one function. These methods encompass traditional single-cell methods as well as methods accounting for biological replicate including pseudobulk and mixed model methods. The code for this package has been largely inspired by the [Seurat](https://satijalab.org/seurat/) and [Muscat](https://github.com/HelenaLC/muscat) packages. Please see the documentation of these packages for further information. To simplify the readme, differential expression (DE) and differential accessibility will be used interchangeably unless stated explicity.
 
 ## System requirements
@@ -58,7 +60,7 @@ If Seurat is not installed this will be needed for single-cell methods.
 Finally, install Libra from GitHub:
 
 ```r
-> devtools::install_github("neurorestore/Libra")
+> devtools::install_github("varunkas/Libra")
 ```
 
 This should take no more than a few minutes.
